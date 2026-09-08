@@ -1,0 +1,7 @@
+{
+  "devMode": false,
+  "ignoreCodeBlockRestrictions": false,
+  "preferredDateFormat": "YYYY-MM-DD",
+  "enableJs": false,
+  "enableSyntaxHighlighting": true
+}

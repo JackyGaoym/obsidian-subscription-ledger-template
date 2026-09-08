@@ -1,0 +1,22 @@
+.DS_Store
+.trash/
+
+# Obsidian 的窗口、缓存和设备状态
+.obsidian/workspace*.json
+.obsidian/cache/
+
+# 第三方插件程序由 Obsidian 自己安装，不放进本仓库
+.obsidian/plugins/*/main.js
+.obsidian/plugins/*/styles.css
+.obsidian/plugins/*/manifest.json
+
+# 默认不提交使用者自己的订阅与续费数据
+30 订阅/项目/*
+!30 订阅/项目/.gitkeep
+30 订阅/_续费记录/*
+!30 订阅/_续费记录/.gitkeep
+
+# 本地测试与临时导出
+local-tests/
+tmp/
+*.log

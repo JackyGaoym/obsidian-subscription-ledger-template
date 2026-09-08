@@ -1,0 +1,9 @@
+{
+  "refreshEnabled": true,
+  "refreshInterval": 2500,
+  "allowHtml": true,
+  "enableInlineDataview": true,
+  "enableDataviewJs": true,
+  "enableInlineDataviewJs": false,
+  "dataviewJsKeyword": "dataviewjs"
+}
