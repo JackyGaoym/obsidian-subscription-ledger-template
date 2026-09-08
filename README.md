@@ -9,7 +9,7 @@
 ![订阅账簿桌面总览](docs/images/overview-desktop.png)
 
 <p align="center">
-  <img src="docs/images/overview-narrow.png" width="320" alt="订阅账簿窄屏布局">
+  <img src="docs/images/overview-mobile.png" width="320" alt="订阅账簿手机端首页">
 </p>
 
 ## 能做什么

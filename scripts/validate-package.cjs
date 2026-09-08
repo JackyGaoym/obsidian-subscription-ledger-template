@@ -27,7 +27,7 @@ const required = [
   '90 模板/订阅自动化/订阅档案母版.md',
   '90 模板/订阅素材/订阅总览横幅.png',
   'docs/images/overview-desktop.png',
-  'docs/images/overview-narrow.png',
+  'docs/images/overview-mobile.png',
   'docs/images/create-subscription.png',
   'docs/images/subscription-detail.png',
   'docs/images/logo-picker.png'
