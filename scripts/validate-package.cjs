@@ -12,6 +12,8 @@ const fail = message => errors.push(message);
 const required = [
   'README.md',
   '使用说明.md',
+  'VERSION',
+  'CHANGELOG.md',
   'LICENSE',
   'THIRD_PARTY_NOTICES.md',
   '.gitignore',
@@ -19,18 +21,26 @@ const required = [
   '.obsidian/appearance.json',
   '.obsidian/community-plugins.json',
   '.obsidian/snippets/subscription-editorial.css',
+  '.obsidian/snippets/editorial-foundation.css',
   '30 订阅/订阅主页.md',
   '90 模板/订阅自动化/新建订阅.md',
   '90 模板/订阅自动化/编辑订阅.md',
   '90 模板/订阅自动化/记录续费.md',
   '90 模板/订阅自动化/选择订阅图片.md',
   '90 模板/订阅自动化/订阅档案母版.md',
-  '90 模板/订阅素材/订阅总览横幅.png',
-  'docs/images/overview-desktop.png',
-  'docs/images/overview-mobile.png',
+  '90 模板/订阅自动化/scripts/domain.js',
+  '90 模板/订阅自动化/scripts/repository.js',
+  '90 模板/订阅自动化/scripts/commands.js',
+  '90 模板/订阅自动化/scripts/bootstrap.js',
+  '90 模板/订阅自动化/views/overview.js',
+  '90 模板/订阅自动化/views/detail.js',
+  '90 模板/订阅自动化/views/payment.js',
   'docs/images/create-subscription.png',
   'docs/images/subscription-detail.png',
-  'docs/images/logo-picker.png'
+  'docs/images/payment-record.png',
+  'docs/images/logo-picker.png',
+  'docs/images/overview-desktop.png',
+  'docs/images/overview-mobile.png'
 ];
 
 for (const file of required) if (!exists(file)) fail(`缺少必要文件：${file}`);
@@ -78,6 +88,14 @@ for (const file of templaterFiles) {
   }
 }
 
+const sharedModules = allFiles.filter(file =>
+  /^90 模板\/订阅自动化\/(scripts|views)\/.*\.js$/.test(rel(file))
+);
+for (const file of sharedModules) {
+  try { new Function(fs.readFileSync(file, 'utf8')); }
+  catch (error) { fail(`${rel(file)} 共享脚本无法解析：${error.message}`); }
+}
+
 const textFiles = allFiles.filter(file => /\.(md|json|css|js|cjs|gitignore)$/.test(file) || path.basename(file) === '.gitignore');
 const privatePatterns = [
   { regex: /\/Users\//, label: 'macOS 绝对用户路径' },
@@ -108,6 +126,7 @@ for (const markdownFile of ['README.md', '使用说明.md']) {
 
 notes.push(`必要文件：${required.length} 项`);
 notes.push(`模板脚本：${templaterFiles.length} 个文件，语法检查通过`);
+notes.push(`共享脚本：${sharedModules.length} 个文件，语法检查通过`);
 notes.push(`内置 Logo：${logos.length} 张，均为 1024x1024 PNG`);
 notes.push('个人订阅与续费目录：仅包含 .gitkeep');
 notes.push('第三方插件程序：未打包');
