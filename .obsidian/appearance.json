@@ -1,6 +1,7 @@
 {
   "enabledCssSnippets": [
-    "subscription-editorial"
+    "subscription-editorial",
+    "editorial-foundation"
   ],
   "theme": "moonstone",
   "accentColor": "",

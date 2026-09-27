@@ -4,28 +4,33 @@
 
 它不会连接银行卡、支付宝或任何订阅平台。所有记录都是普通 Markdown 文件，保存在你自己的 Obsidian 仓库中。
 
-> 截图中的名称、金额和日期均为演示数据，不对应任何人的真实消费。
+> 当前版本：**1.1.0**
 
-![订阅账簿桌面总览](docs/images/overview-desktop.png)
+> 下方功能截图中的名称、金额和日期均为演示数据，不对应任何人的真实消费。
+
+![订阅账簿 1.1.0 桌面端首页](docs/images/overview-desktop.png)
 
 <p align="center">
-  <img src="docs/images/overview-mobile.png" width="320" alt="订阅账簿手机端首页">
+  <img src="docs/images/overview-mobile.png" width="360" alt="订阅账簿 1.1.0 手机端首页">
 </p>
 
 ## 能做什么
 
 - 汇总正在使用的订阅，计算月均成本和年度折算。
-- 查看未来 30 天需要扣费或到期的项目。
-- 按“30 天内、已到期、自动续费、手动续费、已停用”筛选。
+- 桌面总览用双栏并排显示“续费提醒”与订阅账本：左侧展示最近 4 项扣费或到期安排，右侧在限定高度内滚动查看更多订阅。过期项目在提醒区提示核对；未来 30 天金额会按账期展开，并标明手动续费是假设。
+- 组合筛选时间、续费方式和状态，搜索服务名称，按下次日期或月均金额排序。
 - 新增、编辑、停用和重新启用订阅。
-- 记录每次实际支付，并自动顺延下一次扣费或到期日期。
-- 在订阅档案里追溯历史续费；误记时可撤销，记录会移入归档而不是永久删除。
+- 记录每次实际支付；确认续费时可按期数顺延，也可填写服务商给出的明确日期。历史补记不改变下一次日期。
+- 在订阅档案里展开完整历史，切换有效、已撤销和待核对记录；每笔流水都有独立明细页，误记时可撤销并移入归档。
+- 新增、编辑和记账提交前预览将写入的金额、日期和预计价。
 - 内置 79 张常见订阅 Logo，也允许使用自己的图片。
-- 同时适配桌面与窄屏布局。
+- 同时适配桌面端与手机端布局。
 
 | 新增订阅 | 订阅档案与续费记录 |
 | --- | --- |
 | ![新增订阅表单](docs/images/create-subscription.png) | ![订阅档案与续费记录](docs/images/subscription-detail.png) |
+
+![单笔续费记录明细](docs/images/payment-record.png)
 
 ![内置订阅 Logo 选择器](docs/images/logo-picker.png)
 
@@ -49,10 +54,10 @@
 3. 进入“设置 → 第三方插件”，关闭安全模式，并分别安装、启用 Dataview、Templater 和 Meta Bind。
 4. 在 Dataview 设置中启用 **Enable JavaScript Queries**。
 5. 在 Templater 设置中把 **Template folder location** 设为 `90 模板`。
-6. 进入“设置 → 外观 → CSS 代码片段”，启用 `subscription-editorial`。
+6. 进入“设置 → 外观 → CSS 代码片段”，启用 `subscription-editorial` 和 `editorial-foundation`。
 7. 打开 `30 订阅/订阅主页.md`，切换到阅读视图。
 
-首次打开时会显示一组只存在于页面内存中的演示数据，方便确认界面是否正常。新增第一项真实订阅后，演示数据会自动消失。
+首次打开是空账本，点击“新增订阅”建立第一项。README 截图使用演示数据，仅用于展示排版。
 
 如果要并入已有仓库，请不要直接覆盖自己的整个 `.obsidian` 文件夹。完整的合并步骤见 [使用说明](使用说明.md)。
 
@@ -65,15 +70,17 @@
 │   ├── 项目/                 # 运行后生成；默认不提交到 Git
 │   └── _续费记录/            # 运行后生成；默认不提交到 Git
 ├── 90 模板/
-│   ├── 订阅自动化/           # Templater 脚本与订阅档案母版
+│   ├── 订阅自动化/           # 表单入口、共享规则、文件操作与视图
 │   └── 订阅素材/
-│       ├── 订阅 Logo/        # 79 张内置透明 PNG
-│       └── 订阅总览横幅.png
+│       └── 订阅 Logo/        # 79 张内置透明 PNG
 ├── .obsidian/
 │   ├── snippets/subscription-editorial.css
+│   ├── snippets/editorial-foundation.css
 │   └── ...                   # 最小配置示例，不含插件程序
 ├── docs/images/              # README 演示截图
 ├── scripts/validate-package.cjs
+├── VERSION
+├── CHANGELOG.md
 ├── 使用说明.md
 ├── LICENSE
 └── THIRD_PARTY_NOTICES.md
@@ -101,7 +108,7 @@ node scripts/validate-package.cjs
 
 ## 使用文档
 
-安装、软件设置、日常操作、目录改名和故障排查都整理在 [使用说明.md](使用说明.md)。
+安装、软件设置、日常操作、目录改名和故障排查都整理在 [使用说明.md](使用说明.md)。版本变化见 [CHANGELOG.md](CHANGELOG.md)。
 
 ## License
 

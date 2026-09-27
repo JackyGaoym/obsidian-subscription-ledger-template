@@ -1,0 +1,191 @@
+/*
+ * Editorial Foundation
+ * Shared design tokens and accessibility defaults for Travel, Equipment,
+ * and Subscription pages. Keep this snippet enabled after the section
+ * snippets so these common decisions remain the final source of truth.
+ */
+
+.travel-editorial,
+.travel-archive,
+.travel-workspace,
+.travel-overview,
+.equipment-overview,
+.equipment-item,
+.subscription-overview,
+.subscription-item {
+  --editorial-paper: #f3efe7;
+  --editorial-paper-deep: #e8e1d5;
+  --editorial-ink: #28231e;
+  --editorial-muted: #736b60;
+  --editorial-rust: #9a3e23;
+  --editorial-rust-dark: #81341e;
+  --editorial-moss: #69705a;
+  --editorial-rule: rgba(63, 53, 43, 0.17);
+  --editorial-serif: "Songti SC", "STSong", "Noto Serif CJK SC", "Source Han Serif SC", Georgia, serif;
+  --editorial-sans: "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans SC", sans-serif;
+  --editorial-text-base: 17px;
+  --editorial-text-xs: 0.7rem;
+  --editorial-focus-ring: 2px solid var(--editorial-rust);
+  --editorial-motion-fast: 160ms ease;
+  --editorial-motion-standard: 220ms ease;
+  --file-line-width: 100%;
+  --line-width: 100%;
+  --line-width-wide: 100%;
+  --font-text: var(--editorial-sans);
+  --text-normal: var(--editorial-ink);
+  --text-muted: var(--editorial-muted);
+  --background-primary: var(--editorial-paper);
+  background: var(--editorial-paper);
+  color: var(--editorial-ink);
+  font-family: var(--editorial-sans);
+  font-size: var(--editorial-text-base);
+  text-rendering: optimizeLegibility;
+}
+
+/* Map every section's legacy variables to the shared palette and type stack. */
+.travel-editorial {
+  --travel-paper: var(--editorial-paper);
+  --travel-paper-deep: var(--editorial-paper-deep);
+  --travel-ink: var(--editorial-ink);
+  --travel-muted: var(--editorial-muted);
+  --travel-rust: var(--editorial-rust);
+  --travel-moss: var(--editorial-moss);
+  --travel-rule: var(--editorial-rule);
+  --travel-serif: var(--editorial-serif);
+  --travel-sans: var(--editorial-sans);
+}
+
+.travel-archive {
+  --archive-paper: var(--editorial-paper);
+  --archive-paper-deep: var(--editorial-paper-deep);
+  --archive-ink: var(--editorial-ink);
+  --archive-muted: var(--editorial-muted);
+  --archive-rust: var(--editorial-rust);
+  --archive-rule: var(--editorial-rule);
+  --archive-serif: var(--editorial-serif);
+  --archive-sans: var(--editorial-sans);
+}
+
+.travel-workspace {
+  --workspace-paper: var(--editorial-paper);
+  --workspace-paper-deep: var(--editorial-paper-deep);
+  --workspace-ink: var(--editorial-ink);
+  --workspace-muted: var(--editorial-muted);
+  --workspace-rust: var(--editorial-rust);
+  --workspace-moss: var(--editorial-moss);
+  --workspace-rule: var(--editorial-rule);
+  --workspace-serif: var(--editorial-serif);
+  --workspace-sans: var(--editorial-sans);
+}
+
+.travel-overview {
+  --overview-paper: var(--editorial-paper);
+  --overview-paper-deep: var(--editorial-paper-deep);
+  --overview-ink: var(--editorial-ink);
+  --overview-muted: var(--editorial-muted);
+  --overview-rust: var(--editorial-rust);
+  --overview-rust-dark: var(--editorial-rust-dark);
+  --overview-moss: var(--editorial-moss);
+  --overview-rule: var(--editorial-rule);
+  --overview-serif: var(--editorial-serif);
+  --overview-sans: var(--editorial-sans);
+}
+
+.equipment-overview,
+.equipment-item {
+  --equipment-paper: var(--editorial-paper);
+  --equipment-paper-deep: var(--editorial-paper-deep);
+  --equipment-ink: var(--editorial-ink);
+  --equipment-muted: var(--editorial-muted);
+  --equipment-rust: var(--editorial-rust);
+  --equipment-moss: var(--editorial-moss);
+  --equipment-rule: var(--editorial-rule);
+  --equipment-serif: var(--editorial-serif);
+  --equipment-sans: var(--editorial-sans);
+}
+
+.subscription-overview,
+.subscription-item {
+  --subscription-paper: var(--editorial-paper);
+  --subscription-paper-deep: var(--editorial-paper-deep);
+  --subscription-ink: var(--editorial-ink);
+  --subscription-muted: var(--editorial-muted);
+  --subscription-rust: var(--editorial-rust);
+  --subscription-moss: var(--editorial-moss);
+  --subscription-rule: var(--editorial-rule);
+  --subscription-serif: var(--editorial-serif);
+  --subscription-sans: var(--editorial-sans);
+}
+
+/* Keep microcopy readable and consistent across dense editorial layouts. */
+.equipment-overview .equipment-overview-fact span,
+.equipment-item .equipment-item-warranty-edit,
+.equipment-item .equipment-item-warranty-form button,
+.equipment-item .equipment-item-attachment-button,
+.equipment-attachment-preview-type,
+.subscription-item .subscription-item-logo-edit,
+.subscription-item .subscription-item-status,
+.subscription-item .subscription-item-mode,
+.travel-workspace .workspace-kicker,
+.travel-workspace .workspace-date span,
+.travel-workspace .callout[data-callout="workspace-toolbar"] > .callout-content,
+.travel-workspace .workspace-stat span,
+.travel-workspace .photo-stat span,
+.travel-itinerary-workspace h2::after,
+.travel-photos-workspace .photo-contact-meta span,
+.travel-photos-workspace .photo-cover-badge {
+  font-size: var(--editorial-text-xs) !important;
+}
+
+/* One keyboard-focus treatment across all interactive editorial controls. */
+:is(
+  .travel-editorial,
+  .travel-archive,
+  .travel-workspace,
+  .travel-overview,
+  .equipment-overview,
+  .equipment-item,
+  .subscription-overview,
+  .subscription-item
+) :is(a, button, [role="button"], [role="tab"]):focus-visible {
+  outline: var(--editorial-focus-ring) !important;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(
+    .travel-editorial,
+    .travel-archive,
+    .travel-workspace,
+    .travel-overview,
+    .equipment-overview,
+    .equipment-item,
+    .subscription-overview,
+    .subscription-item
+  ) *,
+  :is(
+    .travel-editorial,
+    .travel-archive,
+    .travel-workspace,
+    .travel-overview,
+    .equipment-overview,
+    .equipment-item,
+    .subscription-overview,
+    .subscription-item
+  ) *::before,
+  :is(
+    .travel-editorial,
+    .travel-archive,
+    .travel-workspace,
+    .travel-overview,
+    .equipment-overview,
+    .equipment-item,
+    .subscription-overview,
+    .subscription-item
+  ) *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
